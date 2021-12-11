@@ -1,0 +1,55 @@
+*1.1 Introduction*
+First, we need to establish what high-frequency data is, and why it is of interest to us: 
+High-frequency data is characterized by its observations being at 
+very high frequencies, sometimes even at the microsecond level. From this data,
+though noisy, we can present a more accurate level of volatility relative to daily
+returns, which are often calculated from the opening- to- closing price, or the
+closing-to-closing price of an asset. From Figure 2. below, we see a visual example low daily returns, despite the process showing a high level of intraday
+volatility. The high frequency environment allows us to obtain better estimates
+of volatility through realized measures. This paper will present three different
+realized measures; That is, realized Variance (RV), realized Kernel (RK), and
+pre-averaged bipower variation (P.A. BV). A wide range of realized measures
+have been proposed in the literature, but all estimators generally aim to estimate
+either the quadratic variation or the integrated variance (IV) of a price process
+over some interval of time, such as a day or week. In addition to selecting an
+estimator, these non-parametric measures often require additional choices in order to implement them. For example, the practitioner must choose the sampling
+frequency to use, and whether to sample prices in calendar time or tick-time.
+When both trade and quote data is present, the choice of which variable to use
+is also a factor. Moreover, some realized measures require the practitioner to
+specify tuning parameters, such as ”block size” and ”kernel bandwidth”, which
+is the case for realized kernel.
+
+In more mathematical terms, we are interested in estimating volatility object V,
+using discrete data on X during finite interval [= T]. V or IV is often referred
+to as ’integrated volatility’
+
+*PICTURE OF EQUATION*
+
+However, other examples for V could be ’integrated quarticity, jump variation
+or integrated covariance for the multivariate case. We will also be looking closer
+into jump variation later in this thesis.
+Financial high-frequency data consists of four driving factors according to (Christensen, Podolskij, Oomen; 2014) [24]. That is, stochastic volatility, market microstructure noise, jumps in the price, and outliers. In the following section,
+these four components will be the delimiter of the three different estimators of integrated volatility: First we will present the simple realized variance-estimator,
+aggregated at the 5-minute level due to its performance in existing literature
+(Liu, Patton, Sheppard; 2015) [49]. The realized kernel-estimator, due to its robustness to microstructure noise and applicability (Barndorff-Nielsen, Hansen,
+Lunde, Shephard; 2009) [15]. Lastly, we will present the pre-averaged bipower
+variation-estimator due to both its jump- and -microstructure noise robustness
+(Jacod, Li, Myskland, Podolkij, Vetter; 2009) 
+
+*PICTURE OF INTRADAY EXAMPLE*
+
+*2.1: Realized Variance*
+Most common of the realized measures is the realized variance, which is the
+sum of squared intraday returns. This simple estimator is the sample analog of
+quadratic variation, and in the absence of noisy data, it is the non-parametric
+maximum likelihood estimator, and thereby efficient. (Andersen et al.; 2001b:
+Barndorff-Nielsen, Shephard; 2002) [3] [12]. The realized variance is however
+subject to a shortcoming. That is, market microstructure noise induces serial
+autocorrelation in the observed returns, which biases the realized variance estimate at high sampling frequencies (Hansen and Lunde; 2006) [40]. When
+realized variance is implemented in practice, the price process is often sampled
+sparsely to strike a balance between increased accuracy from using higher frequency data, and the adverse effects of microstructure noise. Popular choices
+of sampling frequency include 1-minute, 5-minute, and 30-minute sampling.
+The choice of which sampling frequency to use was later optimized in (Bandi,
+Russel; 2008) [10], using estimates of integrated quarticity and variance of the
+microstructure noise.
+
